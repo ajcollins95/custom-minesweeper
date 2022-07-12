@@ -5,6 +5,7 @@ import '../styles/Game.css';
 const Game = (props) => {
     //const [fieldText, setFieldText] = useState('')
     //const fieldName = props.fieldName
+    const difficulty = 'easy'
 
     return (
         <div className="Game">

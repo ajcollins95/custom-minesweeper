@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+    width: auto;
+}
+
+.cell-table {
+    margin: auto;
+    border-color: black;
+    border-style: solid;
+}
+
