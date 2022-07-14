@@ -1,4 +1,4 @@
-function createBoard(rows, columns, mines) {
+export function createBoard(rows, columns, mines) {
     const maxRows = rows
     const maxCols = columns
     const maxMines = mines
@@ -23,13 +23,13 @@ function createBoard(rows, columns, mines) {
         //takes an empty board and array of mine coords
         //returns a "board" array with mines marked as '-1'
         let row, col;
-        console.log(mineCoords)
+        //console.log(mineCoords)
         mineCoords.forEach((coords) => {
             row = coords[0]
             col = coords[1]
             board[row][col] = -1
         })
-        console.log(board)
+        //console.log(board)
     }
 
     const getAdjMines = (board, r, c) => {
@@ -99,5 +99,4 @@ function createBoard(rows, columns, mines) {
 
 }
 
-createBoard(7, 3, 5)
 

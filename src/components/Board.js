@@ -1,72 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/Board.css';
 import Cell from './Cell'
+import {createBoard} from '../utils/CreateBoard'
+import '../styles/Board.css';
+import { render } from '@testing-library/react';
 
 //import '../styles/App.css';
 
 const Board = (props) => {
-    const cols = 10;
-    const rows = 10;
-    const mines = 5;
-    
-    const seedMines = (r, c, m) => {
-        //seeds mines as a single number
-        const placedMines = []
-        while (placedMines.length < m) {
-            let location = Math.floor(Math.random() * r * c)
-            if (! placedMines.includes(location)) {
-                placedMines.push(location)
-            }
-        }
-        console.log(placedMines)
-        return placedMines
-    }
 
-    const convertRC = (row, col) => {
-        return row * 10 + col
-    }
+    let maxRows = props.proxedBoard.length
+    let maxCols = props.proxedBoard[0].length
 
-    const generateRow = (row, cols, placedMines) => {
-        var columns = [];
-        let isMine = false;
-        for (var col = 0; col < cols; col++) {
-            //console.log(placedMines.includes(convertRC(row, col)))
-            if (placedMines.includes(convertRC(row, col))) {
-                //checks if there is a mine here based on the random seed
+    const create2dArray = (rows, columns) => [...Array(rows).keys()].map(i => Array(columns).fill(0))
+
+    //let proxedBoard = [[-1]];
+    const [isClicked, setIsClicked] = useState(create2dArray(maxRows,maxCols))
+    let renderBoard;
+
+    const generateBoard = (proxedBoard) => {
+        //create JSX to actually render Cells
+        //let maxRows = proxedBoard.length
+        //let maxCols = proxedBoard[0].length
+        console.log('Generating new Board...')
+
+        let renderBoard = []
+        for (let r = 0; r < maxRows; r++) {
+            let cellsRow = []
+            for (let c = 0; c < maxCols; c++) {
                 
-                isMine = true
+                cellsRow.push(<Cell 
+                                isClicked={isClicked[r][c]}
+                                status={proxedBoard[r][c]}
+                                position={[r,c]}
+                                onClick={handleClick}
+                                getAdj={null}  
+                                key={`(${r},${c})`}
+                            />)
             }
-            columns.push(<Cell isMine={isMine} key={`${col}-${row}`} />);
-            isMine = false
+            renderBoard.push(<div className='cell-row' key={`row-${r}`}>{cellsRow}</div>)
         }
-        //return {columns};
-        return <div className='cell-row'>{columns}</div>;
+        return <div className='cell-table'>{renderBoard}</div>
     }
 
+    const handleClick = (e,position) => {
+        //console.log(e)
+        //Changes isClicked array to handle click
+        //deep copy state
+        let row = position[0]
+        let col = position[1]
 
+        let copy = isClicked.map(function(arr) {
+            return arr.slice();
+        });
 
-    const generateBoard = (rows, cols, placedMines) => {
-        const cellBoard = []
-        for (var row = 0; row < rows; row++) {
-            cellBoard.push(<div className='row' key={row}>{generateRow(row, cols, placedMines)}</div>)
+        copy[row][col] = ! copy[row][col]
+        setIsClicked(copy)
+        console.log(position)
+    }
+
+    const getSize = (diff) => {
+        //gets the size of the board based on the difficulty of the game
+        let rows, cols, mines;
+        switch (diff) {
+            case 'easy':
+                rows = 8
+                cols = 10
+                mines = 10
         }
-        return <div className='cell-table'>{cellBoard}</div>
+        return [rows, cols, mines]
     }
-
-    const init = (rows, cols, mines) => {
-        const placedMines = seedMines(rows, cols, mines)
-        return generateBoard(rows, cols, placedMines)
-    }
-
-
-    const boardRender = init(rows,cols,mines)
-
-    
 
     return (
         <div className="heade">
             <p>Board</p>
-            {boardRender}
+            {generateBoard(props.proxedBoard)}
         </div>
     )
 }
