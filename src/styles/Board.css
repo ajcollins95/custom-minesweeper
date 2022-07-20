@@ -1,10 +1,12 @@
 .cell-row {
     display: flex;
-    width: auto;
+    margin: auto;
+    
 }
 
 .cell-table {
     margin: auto;
+    
     border-color: black;
     border-style: solid;
 }

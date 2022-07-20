@@ -9,8 +9,9 @@ const Game = (props) => {
     //const fieldName = props.fieldName
     const difficulty = 'easy'
     const proxedBoard = createBoard(8,10,10)
+    
     return (
-        <div className="Game">
+        <div className="Game" onContextMenu={(e) => e.preventDefault()}>
             <p>Game</p>
             <Board difficulty={difficulty} proxedBoard={proxedBoard}/>
         </div>

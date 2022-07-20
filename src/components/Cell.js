@@ -17,6 +17,7 @@ const Cell = (props) => {
     } 
 
     let stylin;
+
     if (props.isClicked) {
         stylin = {
             color: 'green'
@@ -28,11 +29,18 @@ const Cell = (props) => {
     }
 
     const cellClick = (e) => {
+        console.log(e)
+        e.preventDefault()
         props.onClick(e, props.position)
     }
 
+    const cellRiteClick = (e) => {
+        e.preventDefault()
+        props.onRClick(e, props.position)
+    }
+
     return (
-        <div className="cell" onClick={cellClick} style={stylin}>
+        <div className="cell" onClick={cellClick} style={stylin} onContextMenu={cellRiteClick}>
             {dsp}
         </div>
     )

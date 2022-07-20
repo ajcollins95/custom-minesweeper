@@ -33,6 +33,7 @@ const Board = (props) => {
                                 status={proxedBoard[r][c]}
                                 position={[r,c]}
                                 onClick={handleClick}
+                                onRClick={handleRClick}
                                 getAdj={null}  
                                 key={`(${r},${c})`}
                             />)
@@ -46,6 +47,7 @@ const Board = (props) => {
         //console.log(e)
         //Changes isClicked array to handle click
         //deep copy state
+        console.log(e)
         let row = position[0]
         let col = position[1]
 
@@ -55,6 +57,10 @@ const Board = (props) => {
 
         copy[row][col] = ! copy[row][col]
         setIsClicked(copy)
+        console.log(position)
+    }
+
+    const handleRClick = (e,position) => {
         console.log(position)
     }
 

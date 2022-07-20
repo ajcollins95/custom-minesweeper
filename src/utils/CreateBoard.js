@@ -68,6 +68,7 @@ export function createBoard(rows, columns, mines) {
         //loops through board and places prox nums for each space
         //a proximity number tells how many mines are adjacent to each space
         //returns a board with mines and proxNums
+
         for (let r = 0; r < maxRows; r++) {
             for (let c = 0; c < maxCols; c++) {
                 if (board[r][c] != -1) {
@@ -85,7 +86,7 @@ export function createBoard(rows, columns, mines) {
 
     const main = () => {
         //create new 2d null array to represent board, matching rows and columns
-        let board = create2dArray(maxRows, maxCols)        
+        let board = create2dArray(maxRows, maxCols)
         //create an array of the locations where mines are
         let mineCoords = seedMines()
         //place mines onto the board
