@@ -2,7 +2,7 @@
     height: 40px;
     width: 40px;
     border-style: solid;
-    border-color: red;
+    border-color: green;
     color: white;
     border-width: 1px;
     border-radius: 5px
@@ -12,3 +12,49 @@
     margin:auto;
     color: black;
 }
+
+.clicked {
+    background-color: lightgrey;
+    display: block;
+}
+
+.un-clicked {
+    display: none;
+}
+
+
+
+.status-tile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.status-tile > img {
+    width: 80%;
+    height: 80%;
+}
+
+/*
+.status-tile > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+*/
+
+.cell-content {
+    width: 100%;
+    height: 100%;
+}
+
+/*Specific styling for each of the possible mine-proximity indicators*/
+
+.status-0 > span {
+    display: none;
+}
+
+

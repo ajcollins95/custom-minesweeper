@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Cell from './Cell'
+import Cell from './Cell';
 import {createBoard} from '../utils/CreateBoard'
 import '../styles/Board.css';
 import { render } from '@testing-library/react';
@@ -11,10 +11,10 @@ const Board = (props) => {
     let maxRows = props.proxedBoard.length
     let maxCols = props.proxedBoard[0].length
 
-    const create2dArray = (rows, columns) => [...Array(rows).keys()].map(i => Array(columns).fill(0))
-
+    const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
+    
     //let proxedBoard = [[-1]];
-    const [isClicked, setIsClicked] = useState(create2dArray(maxRows,maxCols))
+    const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
     let renderBoard;
 
     const generateBoard = (proxedBoard) => {
@@ -29,11 +29,10 @@ const Board = (props) => {
             for (let c = 0; c < maxCols; c++) {
                 
                 cellsRow.push(<Cell 
-                                isClicked={isClicked[r][c]}
+                                clickState={clickStates[r][c]}
                                 status={proxedBoard[r][c]}
                                 position={[r,c]}
-                                onClick={handleClick}
-                                onRClick={handleRClick}
+                                onClick={handleCellClick}
                                 getAdj={null}  
                                 key={`(${r},${c})`}
                             />)
@@ -43,25 +42,59 @@ const Board = (props) => {
         return <div className='cell-table'>{renderBoard}</div>
     }
 
-    const handleClick = (e,position) => {
-        //console.log(e)
-        //Changes isClicked array to handle click
-        //deep copy state
-        console.log(e)
-        let row = position[0]
-        let col = position[1]
+    const handleCellLeftClick = (e,position) => {
+        let clickData = {
+            position: position,
+            type: 'left'
+        }
+        handleCellClick(clickData)
+    
+        /*
 
-        let copy = isClicked.map(function(arr) {
+        let copy = clickStates.map(function(arr) {
             return arr.slice();
         });
 
-        copy[row][col] = ! copy[row][col]
-        setIsClicked(copy)
+        //the only time a left click will change state is if the cell is unclicked
+        let currentClickState = clickStates[row][col]
+        if (currentClickState == 0) {copy[row][col] = -1}
+        setClickStates(copy)
         console.log(position)
+        */
+
     }
 
-    const handleRClick = (e,position) => {
-        console.log(position)
+    const handleCellRightClick = (e,position) => {
+        let clickData = {
+            position: position,
+            type: 'right'
+        }
+        handleCellClick(clickData)
+
+    }
+
+    const handleCellClick = (clickData) => {
+        console.log(clickData)
+        //handles anytype of click and adjust state accordingly
+        //set shorthand for variables
+        let r = clickData.position[0], c = clickData.position[1];
+        let clickType = clickData.type;
+        let clickState = clickStates[r][c]
+
+        //create deep copy of state array
+        let copy = clickStates.map(function(arr) {
+            return arr.slice();
+        });
+        
+        //make adjustments to state based on variables
+        if (clickType == 'left' && clickState == 0) {
+            copy[r][c] = -1
+        } else if (clickType == 'right' && clickState != -1) {
+            copy[r][c] = ! copy[r][c]      
+        }
+
+        setClickStates(copy)
+
     }
 
     const getSize = (diff) => {
@@ -77,7 +110,7 @@ const Board = (props) => {
     }
 
     return (
-        <div className="heade">
+        <div className="board">
             <p>Board</p>
             {generateBoard(props.proxedBoard)}
         </div>
