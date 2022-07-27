@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
-import {createBoard} from '../utils/CreateBoard'
+import {createBoard} from '../utils/CreateBoard';
+import {zeroClick} from '../utils/ZeroClick';
 import '../styles/Board.css';
 import { render } from '@testing-library/react';
 
@@ -73,6 +74,13 @@ const Board = (props) => {
 
     }
 
+    const handleZeroClick = (clickData) => {
+        //returns an updated clickState array based on the zero propagation
+        //alert('zero')
+        clickData.board = props.proxedBoard
+        return zeroClick(clickData)
+    }
+
     const handleCellClick = (clickData) => {
         console.log(clickData)
         //handles anytype of click and adjust state accordingly
@@ -89,6 +97,12 @@ const Board = (props) => {
         //make adjustments to state based on variables
         if (clickType == 'left' && clickState == 0) {
             copy[r][c] = -1
+            if (props.proxedBoard[r][c] == 0){
+                //checks to see if a zero status was clicked
+                copy[r][c] = 0
+                clickData.clickStateCopy = copy
+                copy = handleZeroClick(clickData)
+            }
         } else if (clickType == 'right' && clickState != -1) {
             copy[r][c] = ! copy[r][c]      
         }
