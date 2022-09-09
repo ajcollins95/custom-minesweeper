@@ -19,9 +19,7 @@ const Board = (props) => {
     let renderBoard;
 
     const generateBoard = (proxedBoard) => {
-        //create JSX to actually render Cells
-        //let maxRows = proxedBoard.length
-        //let maxCols = proxedBoard[0].length
+        //generates a visible 
         console.log('Generating new Board...')
 
         let renderBoard = []
@@ -49,19 +47,6 @@ const Board = (props) => {
             type: 'left'
         }
         handleCellClick(clickData)
-    
-        /*
-
-        let copy = clickStates.map(function(arr) {
-            return arr.slice();
-        });
-
-        //the only time a left click will change state is if the cell is unclicked
-        let currentClickState = clickStates[row][col]
-        if (currentClickState == 0) {copy[row][col] = -1}
-        setClickStates(copy)
-        console.log(position)
-        */
 
     }
 
