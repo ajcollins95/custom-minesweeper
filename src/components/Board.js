@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
 import BoardHeader from './BoardHeader';
-import {createBoard} from '../utils/CreateBoard';
 import {zeroClick} from '../utils/ZeroClick';
 import '../styles/Board.css';
-import { render } from '@testing-library/react';
-
-//import '../styles/App.css';
 
 const Board = (props) => {
 
@@ -15,12 +11,11 @@ const Board = (props) => {
 
     const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
     
-    //let proxedBoard = [[-1]];
     const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
-    let renderBoard;
+    
 
     const generateBoard = (proxedBoard) => {
-        //generates a visible 
+        //generates a visible board for the game
         console.log('Generating new Board...')
 
         let renderBoard = []
