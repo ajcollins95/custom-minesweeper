@@ -16,12 +16,12 @@
 }
 
 .cell-table {
-    border-color: var(--pallet-hot);
+    border-color: black;
     border-style: solid;
     border-radius: 5px;
     background-color: var(--pallet-neutral);
     width: min-content;
-    margin:auto;
+    margin: auto;
     padding: 2%
     
 
