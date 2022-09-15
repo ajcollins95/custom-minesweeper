@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Board from './Board'
 import {createBoard} from '../utils/CreateBoard'
-
 import '../styles/Game.css';
 
 const Game = (props) => {

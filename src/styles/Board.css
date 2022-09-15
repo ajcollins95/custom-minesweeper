@@ -1,16 +1,39 @@
+:root{
+    --pallet-bg: #101D42;
+    --pallet-hot: #A63D40;
+    --pallet-cool: #677DB7;
+    --pallet-neutral: #DCC7BE;
+    --pallet-off-neutral: #CBB9A8; 
+
+    background-color: var(--pallet-bg)
+}
+
 .cell-row {
     display: flex;
-    margin: auto;
+    width: min-content;
+    
     
 }
 
 .cell-table {
-    margin: auto;
-    
-    border-color: black;
+    border-color: var(--pallet-hot);
     border-style: solid;
+    border-radius: 5px;
+    background-color: var(--pallet-neutral);
+    width: min-content;
+    margin:auto;
+    padding: 2%
+    
+
 }
 
 .board {
     cursor: default;
+    background-color: var(--pallet-cool);
+    border-radius: 5px;
+    border-style: solid;
+    width: min-content;
+    padding: 2%;
+    margin: auto;
 }
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
+import BoardHeader from './BoardHeader';
 import {createBoard} from '../utils/CreateBoard';
 import {zeroClick} from '../utils/ZeroClick';
 import '../styles/Board.css';
@@ -41,24 +42,6 @@ const Board = (props) => {
         return <div className='cell-table'>{renderBoard}</div>
     }
 
-    const handleCellLeftClick = (e,position) => {
-        let clickData = {
-            position: position,
-            type: 'left'
-        }
-        handleCellClick(clickData)
-
-    }
-
-    const handleCellRightClick = (e,position) => {
-        let clickData = {
-            position: position,
-            type: 'right'
-        }
-        handleCellClick(clickData)
-
-    }
-
     const handleZeroClick = (clickData) => {
         //returns an updated clickState array based on the zero propagation
         //alert('zero')
@@ -67,7 +50,6 @@ const Board = (props) => {
     }
 
     const handleCellClick = (clickData) => {
-        console.log(clickData)
         //handles anytype of click and adjust state accordingly
         //set shorthand for variables
         let r = clickData.position[0], c = clickData.position[1];
@@ -96,21 +78,9 @@ const Board = (props) => {
 
     }
 
-    const getSize = (diff) => {
-        //gets the size of the board based on the difficulty of the game
-        let rows, cols, mines;
-        switch (diff) {
-            case 'easy':
-                rows = 8
-                cols = 10
-                mines = 10
-        }
-        return [rows, cols, mines]
-    }
-
     return (
         <div className="board">
-            <p>Board</p>
+            <BoardHeader />
             {generateBoard(props.proxedBoard)}
         </div>
     )

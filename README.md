@@ -70,4 +70,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### Bugs
-can just highlight and see what all the answers are
+-If you right click on a mine that isn't uncovered, the mine flashes into view
+
+### Planned Features
+-Upgrade animations
+
+### 
+

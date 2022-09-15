@@ -1,11 +1,23 @@
+:root{
+    --pallet-bg: #101D42;
+    --pallet-hot: #A63D40;
+    --pallet-cool: #677DB7;
+    --pallet-neutral: #DCC7BE;
+    --pallet-off-neutral: #CBB9A8; 
+
+}
+
 .cell {
     height: 40px;
     width: 40px;
     border-style: solid;
-    border-color: green;
+    border-color: var(--pallet-hot);
+    background-color: var(--pallet-off-neutral);
     color: white;
     border-width: 1px;
-    border-radius: 5px
+    border-radius: 5px;
+    flex: 0 0 auto;
+
 }
 
 .status {
@@ -14,7 +26,7 @@
 }
 
 .clicked {
-    background-color: lightgrey;
+    background-color: var(--pallet-cool);
     display: block;
 }
 
