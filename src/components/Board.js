@@ -12,7 +12,7 @@ const Board = (props) => {
     const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
     
     const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
-    
+    const [placedFlags, setPlacedFlags] = useState(0)
 
     const generateBoard = (proxedBoard) => {
         //generates a visible board for the game
@@ -38,6 +38,13 @@ const Board = (props) => {
     }
 
     const handleZeroClick = (clickData) => {
+        //returns an updated clickState array based on the zero propagation
+        //alert('zero')
+        clickData.board = props.proxedBoard
+        return zeroClick(clickData)
+    }
+
+    const handleDiffChange = (clickData) => {
         //returns an updated clickState array based on the zero propagation
         //alert('zero')
         clickData.board = props.proxedBoard
@@ -75,7 +82,7 @@ const Board = (props) => {
 
     return (
         <div className="board">
-            <BoardHeader />
+            <BoardHeader handleDiffChange={handleDiffChange} />
             {generateBoard(props.proxedBoard)}
         </div>
     )
