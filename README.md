@@ -73,14 +73,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -If you right click on a mine that isn't uncovered, the mine flashes into view. Only for the first click of the game
 
 ### Planned Features
--Upgrade animations
--Add Clock
--Add Placed Flag count
--Difficulty Selector (done)
--Variable Cell Sizes
--Game Over
--Win Game
--Play Again
+-Features
+    -Add Clock
+    -Add Placed Flag count
+    -Difficulty Selector (done)
+-Styling
+    -Variable Cell Sizes
+-Game Logic
+    -Upgrade Animations
+    -Game Over
+    -Win Game
+    -Play Again
 
 
 
