@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
 import BoardHeader from './BoardHeader';
-import {zeroClick} from '../utils/ZeroClick';
 import '../styles/Board.css';
 
 const Board = (props) => {
