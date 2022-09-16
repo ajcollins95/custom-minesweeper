@@ -6,13 +6,14 @@ import '../styles/Board.css';
 
 const Board = (props) => {
 
+    console.log(`Proxed Board = ${props.proxedBoard}`)
     let maxRows = props.proxedBoard.length
     let maxCols = props.proxedBoard[0].length
 
     const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
     
     const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
-    const [placedFlags, setPlacedFlags] = useState(0)
+    //const [placedFlags, setPlacedFlags] = useState(0)
 
     const generateBoard = (proxedBoard) => {
         //generates a visible board for the game
@@ -44,11 +45,11 @@ const Board = (props) => {
         return zeroClick(clickData)
     }
 
-    const handleDiffChange = (clickData) => {
+    const handleDiffChange = (difficulty) => {
         //returns an updated clickState array based on the zero propagation
         //alert('zero')
-        clickData.board = props.proxedBoard
-        return zeroClick(clickData)
+        console.log('diffchange board')
+        props.handleDiffChange(difficulty)
     }
 
     const handleCellClick = (clickData) => {
@@ -82,7 +83,7 @@ const Board = (props) => {
 
     return (
         <div className="board">
-            <BoardHeader handleDiffChange={handleDiffChange} />
+            <BoardHeader handleDiffChange={handleDiffChange} difficulty={props.difficulty}/>
             {generateBoard(props.proxedBoard)}
         </div>
     )

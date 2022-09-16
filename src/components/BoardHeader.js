@@ -4,14 +4,14 @@ import React, { useState, useEffect } from 'react';
 
 
 
-function BoardHeader() {
+function BoardHeader(props) {
 
   useEffect(() => {
     // Do something
     
   }, []);
 
-  const [difficulty, setDifficulty ] = React.useState('fruit');
+  //const [difficulty, setDifficulty ] = React.useState('easy');
 
   const Dropdown = ({ label, value, options, onChange }) => {
     return (
@@ -25,14 +25,17 @@ function BoardHeader() {
       </label>
     );
   };
+
   const options = [
-    { label: 'Fruit', value: 'fruit' },
-    { label: 'Vegetable', value: 'vegetable' },
-    { label: 'Meat', value: 'meat' },
+    { label: 'Easy', value: 'easy' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Hard', value: 'hard' },
   ];
 
-  const handleChange = (event) => {
-    setDifficulty(event.target.value);
+  const handleDiffChange = (event) => {
+    console.log('diffchange bheader')
+    props.handleDiffChange(event.target.value)
+
   };
 
   return (
@@ -47,8 +50,8 @@ function BoardHeader() {
         <Dropdown
           label="Difficulty"
           options={options}
-          value={difficulty}
-          onChange={handleChange}
+          value={props.difficulty}
+          onChange={handleDiffChange}
         />
 
     
