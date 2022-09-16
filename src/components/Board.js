@@ -10,9 +10,7 @@ const Board = (props) => {
     let maxRows = props.proxedBoard.length
     let maxCols = props.proxedBoard[0].length
 
-    const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
-    
-    const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
+    //const [clickStates, setClickStates] = useState(create2dArray(maxRows, maxCols, 0))
     //const [placedFlags, setPlacedFlags] = useState(0)
 
     const generateBoard = (proxedBoard) => {
@@ -25,10 +23,10 @@ const Board = (props) => {
             for (let c = 0; c < maxCols; c++) {
                 
                 cellsRow.push(<Cell 
-                                clickState={clickStates[r][c]}
+                                clickState={props.clickStates[r][c]}
                                 status={proxedBoard[r][c]}
                                 position={[r,c]}
-                                onClick={handleCellClick}
+                                onClick={props.handleCellClick}
                                 getAdj={null}  
                                 key={`(${r},${c})`}
                             />)
@@ -38,48 +36,13 @@ const Board = (props) => {
         return <div className='cell-table'>{renderBoard}</div>
     }
 
-    const handleZeroClick = (clickData) => {
-        //returns an updated clickState array based on the zero propagation
-        //alert('zero')
-        clickData.board = props.proxedBoard
-        return zeroClick(clickData)
-    }
 
     const handleDiffChange = (difficulty) => {
-        //returns an updated clickState array based on the zero propagation
-        //alert('zero')
-        console.log('diffchange board')
+        //changes difficulty state in Game.js
         props.handleDiffChange(difficulty)
     }
 
-    const handleCellClick = (clickData) => {
-        //handles anytype of click and adjust state accordingly
-        //set shorthand for variables
-        let r = clickData.position[0], c = clickData.position[1];
-        let clickType = clickData.type;
-        let clickState = clickStates[r][c]
-
-        //create deep copy of state array
-        let copy = clickStates.map(function(arr) {
-            return arr.slice();
-        });
-        
-        //make adjustments to state based on variables
-        if (clickType == 'left' && clickState == 0) {
-            copy[r][c] = -1
-            if (props.proxedBoard[r][c] == 0){
-                //checks to see if a zero status was clicked
-                copy[r][c] = 0
-                clickData.clickStateCopy = copy
-                copy = handleZeroClick(clickData)
-            }
-        } else if (clickType == 'right' && clickState != -1) {
-            copy[r][c] = ! copy[r][c]      
-        }
-
-        setClickStates(copy)
-
-    }
+    
 
     return (
         <div className="board">
