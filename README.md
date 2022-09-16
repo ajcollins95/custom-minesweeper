@@ -76,7 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Upgrade animations
 -Add Clock
 -Add Placed Flag count
--Difficulty Selector
+-Difficulty Selector (done)
 -Variable Cell Sizes
 -Game Over
 -Win Game
