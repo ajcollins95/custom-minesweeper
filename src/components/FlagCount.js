@@ -1,10 +1,10 @@
 import '../styles/BoardHeader.css';
-import FlagCount from './FlagCount'
+import Game from './Game'
 import React, { useState, useEffect } from 'react';
 
 
 
-function BoardHeader(props) {
+function FlagCount(props) {
 
   useEffect(() => {
     // Do something
@@ -39,23 +39,11 @@ function BoardHeader(props) {
   };
 
   return (
-    <div className="BoardHeader">
-      <p>New Header</p>
-       <div className="app-row">
-        <Dropdown
-          label="Difficulty"
-          options={options}
-          value={props.difficulty}
-          onChange={handleDiffChange}
-        />
-        <FlagCount
-          placedFlags={props.placedFlags} />
+    <div className="FlagCount">
+      <p>Flags: {props.placedFlags}</p>
 
-
-    
-       </div>
     </div>
   );
 }
 
-export default BoardHeader;
+export default FlagCount;

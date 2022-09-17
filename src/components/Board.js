@@ -45,7 +45,10 @@ const Board = (props) => {
 
     return (
         <div className="board">
-            <BoardHeader handleDiffChange={handleDiffChange} difficulty={props.difficulty}/>
+            <BoardHeader 
+                handleDiffChange={handleDiffChange} 
+                difficulty={props.difficulty}
+                placedFlags={props.placedFlags}/>
             {generateBoard(props.proxedBoard)}
         </div>
     )
