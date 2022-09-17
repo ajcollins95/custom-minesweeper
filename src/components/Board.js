@@ -48,6 +48,7 @@ const Board = (props) => {
             <BoardHeader 
                 handleDiffChange={handleDiffChange} 
                 difficulty={props.difficulty}
+                difficulties={props.difficulties}
                 placedFlags={props.placedFlags}/>
             {generateBoard(props.proxedBoard)}
         </div>

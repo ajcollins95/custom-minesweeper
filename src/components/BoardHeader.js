@@ -49,6 +49,7 @@ function BoardHeader(props) {
           onChange={handleDiffChange}
         />
         <FlagCount
+          remainingFlags={props.difficulties[props.difficulty].mines - props.placedFlags}
           placedFlags={props.placedFlags} />
 
 

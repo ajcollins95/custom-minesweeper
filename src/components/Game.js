@@ -32,19 +32,27 @@ const Game = (props) => {
     }
 
     const handleCellClick = (clickData) => {
+        //This is run everytime a square is clicked
+        //I want to not have to refactor uCS, so I'm doing a hacky way of
+        //preventing too many flags from being placed
+
+        //copy the original clickStates array
+        let prevClickStates = clickStates.map((row) => {return row.slice()})
+
         setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
+
 
     }
 
     const countFlags = (clickStates) => {
         let rows = difficulties[difficulty].rows;
         let columns = difficulties[difficulty].columns;
-        let rightClickValue = 1;
+        let rightClickValue = 1; // In click states, a '1' is a right click
         let flagCount = 0
 
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < columns; c++) {
-                if (clickStates[r][c] == 1) flagCount++;                
+                if (clickStates[r][c] == rightClickValue) flagCount++;                
             }
         }
 
@@ -63,6 +71,7 @@ const Game = (props) => {
                                         )
 
 
+
     React.useEffect(() => {
         //resets the board if difficulty changes
         resetBoard()
@@ -70,9 +79,48 @@ const Game = (props) => {
 
     React.useEffect(() => {
         //counts flags if clickStates changes
-        setPlacedFlags(countFlags(clickStates))
+        setPlacedFlags(countFlags(clickStates)) 
 
     }, [clickStates])
+
+    const handleZeroClick = (clickData, proxedBoard) => {
+        //returns an updated clickState array based on the zero propagation
+        clickData.board = proxedBoard
+        return zeroClick(clickData)
+    }
+    
+    const updateClickStates = (clickData, clickStates, proxedBoard) => {
+        //handles anytype of click and adjust state accordingly
+            //set shorthand for variables
+            let r = clickData.position[0], c = clickData.position[1];
+            let clickType = clickData.type;
+            let clickState = clickStates[r][c]
+    
+            //create deep copy of state array
+            let copy = clickStates.map(function(arr) {
+                return arr.slice();
+            });
+            
+            //make adjustments to state based on variables
+            if (clickType == 'left' && clickState == 0) {
+                copy[r][c] = -1
+                if (proxedBoard[r][c] == 0){
+                    //checks to see if a zero status was clicked
+                    copy[r][c] = 0
+                    clickData.clickStateCopy = copy
+                    copy = handleZeroClick(clickData, proxedBoard)
+                }
+            } else if (clickType == 'right' && clickState != -1) {
+                if (placedFlags == difficulties[difficulty].mines) {
+                    copy[r][c] = 0
+                } else {
+                    copy[r][c] = ! copy[r][c]      
+
+                }
+            }
+    
+            return copy
+    }
 
     const resetBoard = () => {
         //This is what will reset a game back to the starting board
@@ -89,6 +137,7 @@ const Game = (props) => {
             <p>Game</p>
             <Board 
                 difficulty={difficulty}
+                difficulties={difficulties}
                 proxedBoard={proxedBoard}
                 clickStates={clickStates}
                 placedFlags={placedFlags}

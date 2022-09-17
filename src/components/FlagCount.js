@@ -11,36 +11,9 @@ function FlagCount(props) {
     
   }, []);
 
-  //const [difficulty, setDifficulty ] = React.useState('easy');
-
-  const Dropdown = ({ label, value, options, onChange }) => {
-    return (
-      <label>
-        {label}
-        <select value={value} onChange={onChange}>
-          {options.map((option) => (
-            <option value={option.value}>{option.label}</option>
-          ))}
-        </select>
-      </label>
-    );
-  };
-
-  const options = [
-    { label: 'Easy', value: 'easy' },
-    { label: 'Medium', value: 'medium' },
-    { label: 'Hard', value: 'hard' },
-  ];
-
-  const handleDiffChange = (event) => {
-    console.log('diffchange bheader')
-    props.handleDiffChange(event.target.value)
-
-  };
-
   return (
     <div className="FlagCount">
-      <p>Flags: {props.placedFlags}</p>
+      <p>Flags: {props.remainingFlags}</p>
 
     </div>
   );
