@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Board from './Board'
 import {createBoard} from '../utils/CreateBoard'
 import {getGameStatus} from '../utils/GetGameStatus'
+import {getFinalClickStates} from '../utils/GetFinalClickStates'
 import { zeroClick } from '../utils/ZeroClick';
 import '../styles/Game.css';
 
@@ -51,17 +52,17 @@ const Game = (props) => {
     //Event handlers
     const handleCellClick = (clickData) => {
         //This is run everytime a square is clicked
+        if (gameState != 'in-progress') {
+            return
+        }
         let clickPos = clickData.position
         setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
         let localGameState = getGameStatus(clickData, clickStates, proxedBoard)
         //console.log(`clickPos: ${clickPos}\ngameState: ${gameState}`)
         if (localGameState == 'game-over') {
-            let rows = difficulties[difficulty].rows
-            let cols = difficulties[difficulty].columns
-            
-            let finalClickStates = create2dArray(rows, cols, -1)
-            setClickStates(finalClickStates)
+            setClickStates(getFinalClickStates(clickStates, proxedBoard))
         }
+        setGameState(localGameState)
     }
 
     const handleZeroClick = (clickData, proxedBoard) => {
@@ -129,6 +130,7 @@ const Game = (props) => {
             difficulties[difficulty].rows,
             difficulties[difficulty].columns,
             0))
+        setGameState('in-progress')
     }   
 
     //Use effect 'hooks'
