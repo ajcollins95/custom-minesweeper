@@ -25,6 +25,7 @@ const Board = (props) => {
                                 status={proxedBoard[r][c]}
                                 position={[r,c]}
                                 onClick={props.handleCellClick}
+                                gameState={props.gameState}
                                 getAdj={null}  
                                 key={`(${r},${c})`}
                             />)

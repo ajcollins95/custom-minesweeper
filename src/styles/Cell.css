@@ -26,7 +26,7 @@
 }
 
 .clicked {
-    background-color: var(--pallet-cool);
+    background-color: var(--pallet-bg);
     display: block;
 }
 
@@ -36,7 +36,9 @@
     display: none;
 }
 
-
+.win-state {
+    background-color: var(--pallet-cool);
+}
 
 .status-tile {
     width: 100%;

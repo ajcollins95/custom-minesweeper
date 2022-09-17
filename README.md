@@ -79,7 +79,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     -Difficulty Selector (done)
 -Styling
     -Variable Cell Sizes
-    -Cells turn deep blue on a win
+    -Cells turn deep blue on a win(done)
     -Clicking anywhere after "endgame" resets (done)
 -Game Logic
     -Upgrade animations (2.0)

@@ -70,7 +70,6 @@ const Game = (props) => {
         } else if (localGameState == 'win-game') {
             setClickStates(localClickStates)
 
-            alert("YOUWIN")
         } else {
             setClickStates(localClickStates)
 
@@ -169,6 +168,7 @@ const Game = (props) => {
                 proxedBoard={proxedBoard}
                 clickStates={clickStates}
                 placedFlags={placedFlags}
+                gameState={gameState}
                 handleDiffChange={handleDiffChange}
                 handleCellClick={handleCellClick}/>
         </div>
