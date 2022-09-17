@@ -11,12 +11,12 @@ const Cell = (props) => {
     let cellContent;
     if (props.clickState == 1){
         //if this has been right clicked, display flag on top of the tile
-        cellContent = <div className="status-tile">
+        cellContent = <div className="status-tile flag">
             <img className="flag-tile" src={flagSrc}></img>
         </div> 
     } else if (props.status == -1) {
         //eventually a mine icon img tag
-        cellContent = <div className="status-tile">
+        cellContent = <div className="status-tile mine">
             <img className='mine-tile' src={mineSrc}></img>
         </div>
     } else{

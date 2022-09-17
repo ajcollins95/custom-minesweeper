@@ -4,8 +4,7 @@ import BoardHeader from './BoardHeader';
 import '../styles/Board.css';
 
 const Board = (props) => {
-
-    console.log(`Proxed Board = ${props.proxedBoard}`)
+    //console.log(`Proxed Board = ${props.proxedBoard}`)
     let maxRows = props.proxedBoard.length
     let maxCols = props.proxedBoard[0].length
 
@@ -14,7 +13,7 @@ const Board = (props) => {
 
     const generateBoard = (proxedBoard) => {
         //generates a visible board for the game
-        console.log('Generating new Board...')
+        //console.log('Generating new Board...')
 
         let renderBoard = []
         for (let r = 0; r < maxRows; r++) {

@@ -30,6 +30,8 @@
     display: block;
 }
 
+
+
 .un-clicked {
     display: none;
 }
@@ -67,6 +69,12 @@
 
 .status-0 > span {
     display: none;
+}
+
+.mine {
+
+    /*filter: invert(28%) sepia(67%) saturate(769%) hue-rotate(313deg) brightness(95%) contrast(92%);   */ 
+    background-color: var(--pallet-hot);
 }
 
 

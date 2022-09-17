@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Board from './Board'
 import {createBoard} from '../utils/CreateBoard'
+import {getGameStatus} from '../utils/GetGameStatus'
 import { zeroClick } from '../utils/ZeroClick';
 import '../styles/Game.css';
 
@@ -50,7 +51,17 @@ const Game = (props) => {
     //Event handlers
     const handleCellClick = (clickData) => {
         //This is run everytime a square is clicked
+        let clickPos = clickData.position
         setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
+        let localGameState = getGameStatus(clickData, clickStates, proxedBoard)
+        //console.log(`clickPos: ${clickPos}\ngameState: ${gameState}`)
+        if (localGameState == 'game-over') {
+            let rows = difficulties[difficulty].rows
+            let cols = difficulties[difficulty].columns
+            
+            let finalClickStates = create2dArray(rows, cols, -1)
+            setClickStates(finalClickStates)
+        }
     }
 
     const handleZeroClick = (clickData, proxedBoard) => {
@@ -131,6 +142,7 @@ const Game = (props) => {
         setPlacedFlags(countFlags(clickStates)) 
 
     }, [clickStates])
+
     
     return (
         <div className="Game" onContextMenu={(e) => e.preventDefault()}>
