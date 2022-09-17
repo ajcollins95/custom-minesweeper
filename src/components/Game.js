@@ -5,6 +5,8 @@ import { zeroClick } from '../utils/ZeroClick';
 import '../styles/Game.css';
 
 const Game = (props) => {
+
+    //Define properties for each difficulty level
     const difficulties = {
         easy: {
             rows: 8,
@@ -22,7 +24,10 @@ const Game = (props) => {
             mines: 99
         }
     }
-    
+
+    //generator functions for some of the state variables
+    const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
+
     const createProxedBoard = (difficulty) => {
         //makes a proxed Board based on the given difficulty
         //hardcoded difficulty parameters since there's only three types
@@ -30,12 +35,33 @@ const Game = (props) => {
         return createBoard(diffData.rows, diffData.columns, diffData.mines);
     }
 
+    //Declare state variables
+    const [difficulty, setDifficulty ] = useState('medium');
+    const [gameState, setGameState ] = useState('in-progress');
+    const [placedFlags, setPlacedFlags ] = useState(0);
+    const [proxedBoard, setProxedBoard ] = useState(createProxedBoard(difficulty));
+    const [clickStates, setClickStates] = useState(create2dArray(
+                                            difficulties[difficulty].rows,
+                                            difficulties[difficulty].columns,
+                                            0)
+    )
+    
+
+    //Event handlers
     const handleCellClick = (clickData) => {
         //This is run everytime a square is clicked
         setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
-
-
     }
+
+    const handleZeroClick = (clickData, proxedBoard) => {
+        //returns an updated clickState array based on the zero propagation
+        clickData.board = proxedBoard
+        return zeroClick(clickData)
+    }
+
+    const handleDiffChange = (difficulty) => setDifficulty(difficulty)
+
+    //General Game.js methods
 
     const countFlags = (clickStates) => {
         let rows = difficulties[difficulty].rows;
@@ -50,36 +76,6 @@ const Game = (props) => {
         }
 
         return flagCount
-    }
-
-    const handleDiffChange = (difficulty) => setDifficulty(difficulty)
-    const create2dArray = (rows, columns, fill=0) => [...Array(rows).keys()].map(i => Array(columns).fill(fill))
-    const [difficulty, setDifficulty ] = useState('medium');
-    const [placedFlags, setPlacedFlags ] = useState(0);
-    const [proxedBoard, setProxedBoard ] = useState(createProxedBoard(difficulty));
-    const [clickStates, setClickStates] = useState(create2dArray(
-                                            difficulties[difficulty].rows,
-                                            difficulties[difficulty].columns,
-                                            0)
-                                        )
-
-
-
-    React.useEffect(() => {
-        //resets the board if difficulty changes
-        resetBoard()
-    }, [difficulty]);
-
-    React.useEffect(() => {
-        //counts flags if clickStates changes
-        setPlacedFlags(countFlags(clickStates)) 
-
-    }, [clickStates])
-
-    const handleZeroClick = (clickData, proxedBoard) => {
-        //returns an updated clickState array based on the zero propagation
-        clickData.board = proxedBoard
-        return zeroClick(clickData)
     }
     
     const updateClickStates = (clickData, clickStates, proxedBoard) => {
@@ -122,8 +118,19 @@ const Game = (props) => {
             difficulties[difficulty].rows,
             difficulties[difficulty].columns,
             0))
-        
     }   
+
+    //Use effect 'hooks'
+    React.useEffect(() => {
+        //resets the board if difficulty changes
+        resetBoard()
+    }, [difficulty]);
+
+    React.useEffect(() => {
+        //counts flags if clickStates changes
+        setPlacedFlags(countFlags(clickStates)) 
+
+    }, [clickStates])
     
     return (
         <div className="Game" onContextMenu={(e) => e.preventDefault()}>
