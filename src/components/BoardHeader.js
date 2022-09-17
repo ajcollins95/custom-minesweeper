@@ -15,14 +15,12 @@ function BoardHeader(props) {
 
   const Dropdown = ({ label, value, options, onChange }) => {
     return (
-      <label>
-        {label}
+      
         <select value={value} onChange={onChange}>
           {options.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
         </select>
-      </label>
     );
   };
 
@@ -40,7 +38,6 @@ function BoardHeader(props) {
 
   return (
     <div className="BoardHeader">
-      <p>New Header</p>
        <div className="app-row">
         <Dropdown
           label="Difficulty"
@@ -52,8 +49,6 @@ function BoardHeader(props) {
           remainingFlags={props.difficulties[props.difficulty].mines - props.placedFlags}
           placedFlags={props.placedFlags} />
 
-
-    
        </div>
     </div>
   );

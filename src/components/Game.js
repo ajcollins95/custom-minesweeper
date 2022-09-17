@@ -3,7 +3,6 @@ import Board from './Board'
 import {createBoard} from '../utils/CreateBoard'
 import { zeroClick } from '../utils/ZeroClick';
 import '../styles/Game.css';
-import { updateClickStates } from '../utils/UpdateClickStates';
 
 const Game = (props) => {
     const difficulties = {
@@ -33,12 +32,6 @@ const Game = (props) => {
 
     const handleCellClick = (clickData) => {
         //This is run everytime a square is clicked
-        //I want to not have to refactor uCS, so I'm doing a hacky way of
-        //preventing too many flags from being placed
-
-        //copy the original clickStates array
-        let prevClickStates = clickStates.map((row) => {return row.slice()})
-
         setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
 
 

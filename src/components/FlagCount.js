@@ -1,5 +1,5 @@
-import '../styles/BoardHeader.css';
-import Game from './Game'
+import '../styles/FlagCount.css';
+import flagSrc from '../assets/flag.svg';
 import React, { useState, useEffect } from 'react';
 
 
@@ -12,8 +12,11 @@ function FlagCount(props) {
   }, []);
 
   return (
-    <div className="FlagCount">
-      <p>Flags: {props.remainingFlags}</p>
+    <div className="flag-count">
+        <div className='img-frame'>
+            <img className='flag-icon' src={flagSrc}></img>
+        </div>
+        <p>{props.remainingFlags}</p>
 
     </div>
   );

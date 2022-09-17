@@ -1,0 +1,17 @@
+.flag-count {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-frame {
+    width: 20%;
+}
+
+img {
+    border-color: orange;
+}
+
+p {
+    margin: 0;
+}
+
