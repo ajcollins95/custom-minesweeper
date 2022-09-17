@@ -75,7 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Planned Features
 -Features
     -Add Clock (2.0)
-    -Add Placed Flag count
+    -Add Placed Flag count (done)
     -Difficulty Selector (done)
 -Styling
     -Variable Cell Sizes
