@@ -55,6 +55,7 @@ const Game = (props) => {
 
         //When the game state is not in progress, no clicking allowed!
         if (gameState != 'in-progress') {
+            resetBoard()
             return
         }
 
@@ -72,9 +73,10 @@ const Game = (props) => {
             alert("YOUWIN")
         } else {
             setClickStates(localClickStates)
-            setGameState(localGameState)
 
         }
+        setGameState(localGameState)
+
     }
 
     const handleZeroClick = (clickData, proxedBoard) => {
