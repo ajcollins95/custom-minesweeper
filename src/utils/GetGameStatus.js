@@ -21,7 +21,20 @@ export function getGameStatus(clickData, clickStates, proxedBoard) {
     }
 
     const isWin = () => {
-        return 1 > 40
+        let clickStateCopy = clickStates.map((arr) => {return arr.slice();});
+
+        for (let r = 0; r < maxRows; r++) {
+            let cellsRow = []
+            for (let c = 0; c < maxCols; c++) {
+                let isMineAtPos = proxedBoard[r][c] == -1
+                let isUncovered = clickStates[r][c] == -1
+
+                if (!isMineAtPos && !isUncovered) {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
 

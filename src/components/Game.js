@@ -52,17 +52,29 @@ const Game = (props) => {
     //Event handlers
     const handleCellClick = (clickData) => {
         //This is run everytime a square is clicked
+
+        //When the game state is not in progress, no clicking allowed!
         if (gameState != 'in-progress') {
             return
         }
-        let clickPos = clickData.position
-        setClickStates(updateClickStates(clickData, clickStates, proxedBoard))
-        let localGameState = getGameStatus(clickData, clickStates, proxedBoard)
-        //console.log(`clickPos: ${clickPos}\ngameState: ${gameState}`)
+
+        //Update click states variable and adjust current state
+        let localClickStates = updateClickStates(clickData, clickStates, proxedBoard)
+        
+
+        //Amke changes based on current game State
+        let localGameState = getGameStatus(clickData, localClickStates, proxedBoard)
         if (localGameState == 'game-over') {
-            setClickStates(getFinalClickStates(clickStates, proxedBoard))
+            setClickStates(getFinalClickStates(localClickStates, proxedBoard))
+        } else if (localGameState == 'win-game') {
+            setClickStates(localClickStates)
+
+            alert("YOUWIN")
+        } else {
+            setClickStates(localClickStates)
+            setGameState(localGameState)
+
         }
-        setGameState(localGameState)
     }
 
     const handleZeroClick = (clickData, proxedBoard) => {
