@@ -1,8 +1,8 @@
 .app-row > * {
     width: 20%;
-    border: 3px solid transparent;
+    border: px solid var(--pallet-dynamic-borders);
     border-radius: 5px;
-    border-color: black;
+    
     background-color: var(--pallet-neutral);
 
 

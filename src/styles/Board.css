@@ -5,6 +5,10 @@
     --pallet-neutral: #DCC7BE;
     --pallet-off-neutral: #CBB9A8; 
 
+    --pallet-inner-borders: black;
+    --pallet-dynamic-borders: black;
+    --pallet-full-border: var(--pallet-cool);
+
     background-color: var(--pallet-bg)
 }
 
@@ -16,8 +20,8 @@
 }
 
 .cell-table {
-    border-color: black;
     border-style: solid;
+    border: 2px solid var(--pallet-inner-borders);
     border-radius: 5px;
     background-color: var(--pallet-neutral);
     width: min-content;
@@ -31,7 +35,7 @@
     cursor: default;
     background-color: var(--pallet-cool);
     border-radius: 5px;
-    border-style: solid;
+    border: 2px solid var(--pallet-full-border);
     width: min-content;
     padding: 2%;
     margin: auto;
