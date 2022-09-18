@@ -8,8 +8,8 @@
 }
 
 .cell {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-style: solid;
     border-color: var(--pallet-inner-borders);
     background-color: var(--pallet-off-neutral);
@@ -36,7 +36,7 @@
     display: none;
 }
 
-.win-state {
+.cell > .win-state {
     background-color: var(--pallet-cool);
 }
 

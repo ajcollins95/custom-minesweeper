@@ -38,6 +38,9 @@
     border-top-color: var(--pallet-bg);
     border-top-width: 2px;
     border-top-style: solid;
+    margin:auto
+
+    
 }
 
 .board {
@@ -45,11 +48,10 @@
     background-color: var(--pallet-cool);
     border-radius: 5px;
     border: 0px solid var(--pallet-full-border);
-    width: min-content;
-    padding:0px;
-
+    padding:0px 5%;
     padding-bottom: 2%;
-    min-width: 600px;
+    width: fit-content;
+
     /*
     margin: auto;
     */

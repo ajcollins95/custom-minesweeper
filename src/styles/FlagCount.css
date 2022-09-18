@@ -5,6 +5,7 @@
 
 .img-frame {
     width: 25%;
+    min-width: 50px;
     margin: 2%;
 }
 

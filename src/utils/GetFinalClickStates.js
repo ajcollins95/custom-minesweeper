@@ -8,7 +8,7 @@ export function getFinalClickStates(clickStates, proxedBoard) {
         for (let r = 0; r < maxRows; r++) {
             let cellsRow = []
             for (let c = 0; c < maxCols; c++) {
-                if (proxedBoard[r][c] == -1) {
+                if (proxedBoard[r][c] == -1 && clickStates[r][c] <= 0) {
                     clickStateCopy[r][c] = -1
                 }
             }
