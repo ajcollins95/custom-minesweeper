@@ -9,8 +9,10 @@
     --pallet-dynamic-borders: black;
     --pallet-full-border: var(--pallet-cool);
 
-    background-color: var(--pallet-bg)
+    background-color: var(--pallet-bg);
+    font-family: 'Oswald', sans-serif;
 }
+
 
 .cell-row {
     display: flex;
@@ -38,6 +40,8 @@
     border: 2px solid var(--pallet-full-border);
     width: min-content;
     padding: 2%;
+    /*
     margin: auto;
+    */
 }
 

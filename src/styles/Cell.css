@@ -67,6 +67,19 @@
     height: 100%;
 }
 
+@keyframes flash {
+    0%, 50%, 100% {
+       background-color: var(--pallet-neutral);
+    }
+    25%, 75% {
+       background-color: var(--pallet-off-neutral);
+    }
+ }
+ 
+ .cell:hover {
+    animation: flash 1s linear infinite;
+ }
+
 /*Specific styling for each of the possible mine-proximity indicators*/
 
 .status-0 > span {

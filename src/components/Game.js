@@ -161,7 +161,6 @@ const Game = (props) => {
     
     return (
         <div className="Game" onContextMenu={(e) => e.preventDefault()}>
-            <p>Game</p>
             <Board 
                 difficulty={difficulty}
                 difficulties={difficulties}
