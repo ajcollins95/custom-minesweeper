@@ -28,18 +28,28 @@
     background-color: var(--pallet-neutral);
     width: min-content;
     margin: auto;
-    padding: 2%
+    padding: 2%;
+    margin-top:2%;
     
 
+}
+
+.board-bottom {
+    border-top-color: var(--pallet-bg);
+    border-top-width: 2px;
+    border-top-style: solid;
 }
 
 .board {
     cursor: default;
     background-color: var(--pallet-cool);
     border-radius: 5px;
-    border: 2px solid var(--pallet-full-border);
+    border: 0px solid var(--pallet-full-border);
     width: min-content;
-    padding: 2%;
+    padding:0px;
+
+    padding-bottom: 2%;
+    min-width: 600px;
     /*
     margin: auto;
     */

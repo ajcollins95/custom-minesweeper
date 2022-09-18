@@ -6,15 +6,10 @@
 .img-frame {
     width: 25%;
     margin: 2%;
-    border: 1px solid orange;
-}
-
-img {
-    border-color: orange;
 }
 
 .flag-count p {
-    margin: 0;
+    margin: 2%;
     font-family: 'Oswald', sans-serif;
     font-size: 2.5em;
 }

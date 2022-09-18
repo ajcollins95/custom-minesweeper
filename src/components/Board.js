@@ -50,7 +50,10 @@ const Board = (props) => {
                 difficulty={props.difficulty}
                 difficulties={props.difficulties}
                 placedFlags={props.placedFlags}/>
-            {generateBoard(props.proxedBoard)}
+            <div className='board-bottom'>
+                {generateBoard(props.proxedBoard)}
+
+            </div>
         </div>
     )
 }
