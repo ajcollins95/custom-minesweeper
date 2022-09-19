@@ -81,6 +81,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     -Variable Cell Sizes
     -Cells turn deep blue on a win(done)
     -Clicking anywhere after "endgame" resets (done)
+    -Style dropdown menu
+    -prevent cell blinking on a loss
+    -make win state prettier
+    -more padding on top of flag in flag count
 -Game Logic
     -Upgrade animations (2.0)
     -Game Over (done)
