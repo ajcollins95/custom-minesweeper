@@ -82,9 +82,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     -Cells turn deep blue on a win(done)
     -Clicking anywhere after "endgame" resets (done)
     -Style dropdown menu
-    -prevent cell blinking on a loss
-    -make win state prettier
-    -more padding on top of flag in flag count
+    -prevent cell blinking on a loss (done)
+    -make win state prettier (done)
+    -more padding on top of flag in flag count (done)
 -Game Logic
     -Upgrade animations (2.0)
     -Game Over (done)

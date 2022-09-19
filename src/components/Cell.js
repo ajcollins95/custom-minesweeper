@@ -36,12 +36,15 @@ const Cell = (props) => {
         return className
     }
 
-    const winStatus = () => {
+    const gameStatus = () => {
         let className;
         if (props.gameState == 'win-game' && props.clickState >= 0) {
             className = 'win-state'
-        } else {
-            className = ''
+        } else if (props.gameState == 'game-over' && props.clickState >= 0) {
+            className = 'lose-state'
+        }
+        else {
+            className = 'run-state'
         }
         return className
     }
@@ -66,8 +69,8 @@ const Cell = (props) => {
     }
 
     return (
-        <div className={`cell`} onClick={cellLClick} onContextMenu={cellRClick}>
-            <div className={`cell-content ${getClickClass()} ${winStatus()}`}>
+        <div className={`cell ${gameStatus()}`} onClick={cellLClick} onContextMenu={cellRClick}>
+            <div className={`cell-content ${getClickClass()} `}>
                 {cellContent}
             </div>
         </div>

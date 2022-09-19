@@ -36,8 +36,8 @@
     display: none;
 }
 
-.cell > .win-state {
-    background-color: var(--pallet-cool);
+.win-state {
+    background-color: var(--pallet-hot);
 }
 
 .status-tile {
@@ -76,7 +76,7 @@
     }
  }
  
- .cell:hover {
+ .run-state:hover {
     animation: flash 1s linear infinite;
  }
 
