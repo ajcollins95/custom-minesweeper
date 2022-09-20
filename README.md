@@ -77,6 +77,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     -Add Clock (2.0)
     -Add Placed Flag count (done)
     -Difficulty Selector (done)
+    -Update Dropdown 
+-Dropdown
+    -Make font of options smaller (done)
+    -Menu disappears after clicking outside of it
+    -small transition animation
 -Styling
     -Variable Cell Sizes
     -Cells turn deep blue on a win(done)

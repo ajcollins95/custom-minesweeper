@@ -38,6 +38,7 @@ p {
 .dropdown-items ul li {
     list-style-type: none;
     padding-left: 5%;
+    font-size: 20px;
 }
 
 .dropdown-items ul li:hover {
