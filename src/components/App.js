@@ -11,14 +11,32 @@ function App() {
     
   }, []);
 
+  const [dropdownState, setDropdownState ] = useState('display-off');
+
+  const handleDropClick = () => {
+      let newState;
+      if (dropdownState == 'display-off') {
+          newState = 'display-on'
+      } else {
+          newState = 'display-off'
+      }
+      setDropdownState(newState)
+  }
+
   const handleClick = (e) => {
-    console.log(`App sees you clicked...`)
-    console.log(e.target)
+      if (dropdownState == 'display-on' && 
+          e.target.parentNode.tagName != 'UL'){
+          handleDropClick()
+      }
   }
 
   return (
-    <div className="App" onClick={handleClick}>
-      <Game />
+    <div className="App" onClick = {handleClick}>
+      <Game
+        handleDropClick={handleDropClick}
+        dropdownState={dropdownState}
+        onClick = {handleClick}
+       />
     </div>
   );
 }

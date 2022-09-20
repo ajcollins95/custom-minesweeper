@@ -6,7 +6,6 @@ import React, { useState, useEffect } from 'react';
 function Dropdown(props) {
 
   useEffect(() => {
-    // Do something
     
   }, []);
 
@@ -27,17 +26,12 @@ function Dropdown(props) {
     if (e.target.tagName == 'LI') {
         //Did you click on one of the options?
         props.handleDiffChange(e.target.attributes[0].value)
+        props.handleDropClick()
+
     }
-    props.handleDropClick()
   }
 
-  
 
-  /**<ul>
-            {props.options.map((option) => {
-                <li value={option.value}>{option.label}</li>
-            })}
-        </ul> */
   return (
     <div className="dropdown" >
         <div className="dropdown-menu" 
@@ -47,7 +41,8 @@ function Dropdown(props) {
             
         </div>
         <div className={`dropdown-items ${props.dropdownState}`}
-            onClick={handleDiffClick} >
+            onClick={handleDiffClick} 
+            >
             <ul>{renderOptions}</ul>
             
         </div>

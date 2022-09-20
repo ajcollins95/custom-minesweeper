@@ -80,7 +80,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     -Update Dropdown 
 -Dropdown
     -Make font of options smaller (done)
-    -Menu disappears after clicking outside of it
+    -Menu disappears after clicking outside of it (done)
     -small transition animation
 -Styling
     -Variable Cell Sizes
