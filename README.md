@@ -81,7 +81,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Dropdown
     -Make font of options smaller (done)
     -Menu disappears after clicking outside of it (done)
-    -small transition animation
+    -small transition animation (2.0)
 -Styling
     -Variable Cell Sizes
     -Cells turn deep blue on a win(done)
