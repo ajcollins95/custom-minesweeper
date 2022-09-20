@@ -49,6 +49,8 @@ const Board = (props) => {
                 handleDiffChange={handleDiffChange} 
                 difficulty={props.difficulty}
                 difficulties={props.difficulties}
+                dropdownState={props.dropdownState}
+                handleDropClick= {props.handleDropClick}
                 placedFlags={props.placedFlags}/>
             <div className='board-bottom'>
                 {generateBoard(props.proxedBoard)}

@@ -11,8 +11,13 @@ function App() {
     
   }, []);
 
+  const handleClick = (e) => {
+    console.log(`App sees you clicked...`)
+    console.log(e.target)
+  }
+
   return (
-    <div className="App">
+    <div className="App" onClick={handleClick}>
       <Game />
     </div>
   );

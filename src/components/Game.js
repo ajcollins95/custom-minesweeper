@@ -34,6 +34,8 @@ const Game = (props) => {
         //makes a proxed Board based on the given difficulty
         //hardcoded difficulty parameters since there's only three types
         let diffData = difficulties[difficulty]
+        console.log('Trying to use the right difficulty')
+        console.log(difficulty)
         return createBoard(diffData.rows, diffData.columns, diffData.mines);
     }
 
@@ -41,6 +43,7 @@ const Game = (props) => {
     const [difficulty, setDifficulty ] = useState('medium');
     const [gameState, setGameState ] = useState('in-progress');
     const [placedFlags, setPlacedFlags ] = useState(0);
+    const [dropdownState, setDropdownState ] = useState('display-off');
     const [proxedBoard, setProxedBoard ] = useState(createProxedBoard(difficulty));
     const [clickStates, setClickStates] = useState(create2dArray(
                                             difficulties[difficulty].rows,
@@ -86,6 +89,15 @@ const Game = (props) => {
 
     const handleDiffChange = (difficulty) => setDifficulty(difficulty)
 
+    const handleDropClick = () => {
+        let newState;
+        if (dropdownState == 'display-off') {
+            newState = 'display-on'
+        } else {
+            newState = 'display-off'
+        }
+        setDropdownState(newState)
+    }
     //General Game.js methods
 
     const countFlags = (clickStates) => {
@@ -168,7 +180,9 @@ const Game = (props) => {
                 clickStates={clickStates}
                 placedFlags={placedFlags}
                 gameState={gameState}
+                dropdownState={dropdownState}
                 handleDiffChange={handleDiffChange}
+                handleDropClick={handleDropClick}
                 handleCellClick={handleCellClick}/>
         </div>
     )
