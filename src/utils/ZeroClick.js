@@ -26,6 +26,7 @@ export function zeroClick(stateData) {
             [1,0],
             [1,1]
         ]
+        
         let neighbors = []
 
         dirs.forEach(dir => {

@@ -42,7 +42,9 @@ p {
 }
 
 .dropdown-items ul li:hover {
+    
     background-color: var(--pallet-off-neutral)
+    
 }
 
 .dropdown {

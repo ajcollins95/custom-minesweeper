@@ -1,6 +1,6 @@
 .app-row > * {
     width: 30%;
-    border: 0px solid var(--pallet-dynamic-borders);
+    border: 1px solid var(--pallet-dynamic-borders);
     border-radius: 5px;
     background-color: var(--pallet-neutral);
     min-width: 100px;
